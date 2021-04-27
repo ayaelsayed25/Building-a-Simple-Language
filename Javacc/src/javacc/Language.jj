@@ -1,0 +1,102 @@
+
+PARSER_BEGIN(Language)
+package javacc;
+
+import java.io.StringReader;
+
+public class Language {
+  
+    public static void main(String[] args) throws Exception {
+      StringReader in=new StringReader("count 100000");
+      Language language=new Language(in);
+      Language.words();
+    }
+    
+}
+
+PARSER_END(Language)
+
+
+
+
+SKIP: { " " |"\t" |"\n" |"\r" }
+TOKEN: { <LETTER: (["a"-"e"])+ > }
+TOKEN: { <DIGIT: (["0"-"9"])+ >  }
+TOKEN: { <EQUAL: ":="> }
+TOKEN: { <SEMICOLON : ";"> }
+TOKEN: { <PLUS : "+"> }
+TOKEN: { <MINUS : "-"> }
+TOKEN: { <TRUE : "tt"> }
+TOKEN: { <FALSE : "ff"> } 
+TOKEN: { <EQUAL2 : "=="> }
+TOKEN: { <NOT : "!"> }
+TOKEN: { <OR : "^"> }
+TOKEN: { <SKIPCOM : "skip"> }
+TOKEN: { <IF : "if">}
+TOKEN: { <THEN : "then">}
+TOKEN: { <ELSE : "else">}
+TOKEN: { <WHILE : "while">}
+TOKEN: { <DO : "do">}
+
+void words():
+{
+}
+{
+    Com()
+    (<SEMICOLON>
+  	Com())*
+    <EOF>
+}
+void Com():
+{
+}
+{
+	<LETTER>
+	<EQUAL>
+	AExp()
+	|
+	<SKIPCOM>
+	|
+	<IF> BExp() <THEN> Com() <ELSE> Com()
+	|
+	<WHILE> BExp() <DO> Com()
+	
+}
+void AExp():
+{}
+{
+	SimpleAExp()(AExpression())*
+}
+void BExp():
+{}
+{
+	BExpression()(<OR> BExpression())*
+}
+void AExpression():
+{}
+{
+	(<PLUS> | <MINUS>)
+	SimpleAExp()
+}
+void SimpleAExp():
+{}
+{
+	<DIGIT>
+	|
+	<LETTER>
+}
+void BExpression():
+{}
+{	
+	SimpleAExp()(AExpression())*
+	<EQUAL2>
+	SimpleAExp()(AExpression())*
+	|
+	<NOT>
+	BExpression()
+	|
+	<TRUE>
+	|
+	<FALSE>
+}
+
