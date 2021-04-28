@@ -49,10 +49,6 @@ void Command():
 {}
 {
 	Com()(<SEMICOLON>Com())*
-	|
-	<IF> BExp() <THEN> Command() <ELSE> Command()
-	|
-	<WHILE> BExp() <DO> Command()
 }
 
 void Com():
@@ -64,6 +60,10 @@ void Com():
 	AExp()
 	|
 	<SKIPCOM>
+	|
+	<IF> BExp() <THEN> Command() <ELSE> Command()
+	|
+	<WHILE> BExp() <DO> Command()
 }
 
 void AExp():
