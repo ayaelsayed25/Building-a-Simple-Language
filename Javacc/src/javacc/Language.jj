@@ -1,4 +1,3 @@
-
 PARSER_BEGIN(Language)
 package javacc;
 
@@ -20,7 +19,7 @@ PARSER_END(Language)
 
 
 SKIP: { " " |"\t" |"\n" |"\r" }
-TOKEN: { <LETTER: (["a"-"e"])+ > }
+TOKEN: { <LETTER: (["a"-"f"])+ > }
 TOKEN: { <DIGIT: (["0"-"9"])+ >  }
 TOKEN: { <EQUAL: ":="> }
 TOKEN: { <SEMICOLON : ";"> }
@@ -38,12 +37,13 @@ TOKEN: { <ELSE : "else">}
 TOKEN: { <WHILE : "while">}
 TOKEN: { <DO : "do">}
 
-void words():
+String words():
 {
 }
 {
     Command()
     <EOF>
+    {return "Parsed correctly";}
 }
 void Command():
 {}
@@ -103,4 +103,3 @@ void BExpression():
 	|
 	<FALSE>
 }
-
