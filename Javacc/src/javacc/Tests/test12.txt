@@ -1,0 +1,7 @@
+while   ( ( ( ( a == b ) ^ ff ) ^ ( ( 5 + 3 ) == ( a + b )  ) ) ^ ( b == a ) ) do a := b
+;
+a := b
+;
+if ( a == b ) then a := b else a := ( ( a + b ) - a )
+;
+if ( a == b ) then a := b else a := (  ( a + b ) - ( a + c )  )
