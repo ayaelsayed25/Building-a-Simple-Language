@@ -35,6 +35,8 @@ TOKEN: { <THEN : "then">}
 TOKEN: { <ELSE : "else">}
 TOKEN: { <WHILE : "while">}
 TOKEN: { <DO : "do">}
+TOKEN: { <LEFTBRAC : "(" > }
+TOKEN: { <RIGHTBRAC : ")" > }
 
 String words():
 {
@@ -68,37 +70,34 @@ void Com():
 void AExp():
 {}
 {
-	SimpleAExp()(AExpression())*
-}
-void BExp():
-{}
-{
-	BExpression()(<OR> BExpression())*
-}
-void AExpression():
-{}
-{
+	<LEFTBRAC >
+  	AExp()
 	(<PLUS> | <MINUS>)
-	SimpleAExp()
-}
-void SimpleAExp():
-{}
-{
+	AExp()
+	<RIGHTBRAC >
+	|  
 	<DIGIT>
 	|
 	<LETTER>
 }
-void BExpression():
+
+void BExp():
 {}
 {
-  	<FALSE>
- 	| 
-	SimpleAExp()(AExpression())*
-	<EQUAL2>
-	SimpleAExp()(AExpression())*
-	|
+    LOOKAHEAD(4) 	
+	<LEFTBRAC>
+	BExp() < OR > BExp()
+	< RIGHTBRAC >
+	| 
+	<LEFTBRAC>
+	AExp()<EQUAL2>AExp()
+	< RIGHTBRAC >
+	| 
 	<NOT>
-	BExpression()
+	BExp()
 	|
 	<TRUE>
+	|
+	LOOKAHEAD(3)
+  	<FALSE> 
 }

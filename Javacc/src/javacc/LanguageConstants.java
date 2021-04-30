@@ -44,6 +44,10 @@ public interface LanguageConstants {
   int WHILE = 20;
   /** RegularExpression Id. */
   int DO = 21;
+  /** RegularExpression Id. */
+  int LEFTBRAC = 22;
+  /** RegularExpression Id. */
+  int RIGHTBRAC = 23;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -72,6 +76,8 @@ public interface LanguageConstants {
     "\"else\"",
     "\"while\"",
     "\"do\"",
+    "\"(\"",
+    "\")\"",
   };
 
 }
