@@ -22,7 +22,7 @@ class LanguageTest {
 	
 	@Test
 	void test2() {//empty input
-		String expected = testing("test2.txt");
+		String expected = testingString("");
 		assertEquals(expected,"Syntax error");
 	}
 	
