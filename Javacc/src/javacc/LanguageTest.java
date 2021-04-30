@@ -41,13 +41,13 @@ class LanguageTest {
 	
 	@Test
 	void test5() {
-		String expected = testingString("if ff then f := 500 else f := f + 1");
+		String expected = testingString("if ff then f := 500 else f := (f + 1)");
 		assertEquals(expected,"Parsed correctly");
 	}
 	
 	@Test
 	void test6() {
-		String expected = testingString("if d == 5 then fff := 500 else skip");
+		String expected = testingString("if (d == 5) then fff := 500 else skip");
 		assertEquals(expected,"Parsed correctly");
 	}
 	
@@ -71,9 +71,22 @@ class LanguageTest {
 	
 	@Test
 	void test10() {
-		String expected = testingString("while tt ^ ff ^ ! f == 5 do while ! ff ^ a == 5 + 1 do skip");
+		String expected = testingString("while (tt ^ (ff ^ ! (f == 5))) do while ! (ff ^ (a == (5 + 1))) do skip");
 		assertEquals(expected,"Parsed correctly");
 	}
+	
+	@Test
+	void test11() {
+		String expected = testingString("abs := 4");
+		String expected2 = testingString("abc := 4");
+		expected = expected + " " + expected2 ;
+		assertEquals(expected,"Syntax error Parsed correctly");
+	}
+	 @Test
+	 void test12() {
+			String expected = testing("test12.txt");
+			assertEquals(expected,"Parsed correctly");
+	 }
 	
 	static Language parser = null ;
 	static String testing(String fileName) {
@@ -92,9 +105,15 @@ class LanguageTest {
 		    
 			String temp = parser.words();
 			return temp;
-		} catch (Exception e) {
+		} catch (ParseException e) {
 			return "Syntax error";
 		}
+	    catch(TokenMgrError e) {
+	    	return "Syntax error";
+	    }
+	    catch(Exception e) {
+	    	return "unfound file";
+	    }
 	}
 	static String testingString(String text) {
 	    try { 	
@@ -109,6 +128,9 @@ class LanguageTest {
 			return temp;
 		} catch (ParseException e) {
 			return "Syntax error";
-		}  
+		}
+	    catch(TokenMgrError e) {
+	    	return "Syntax error";
+	    }
 	}
 }
