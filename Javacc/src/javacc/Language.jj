@@ -17,8 +17,8 @@ PARSER_END(Language)
 
 
 
-
 SKIP: { " " |"\t" |"\n" |"\r" }
+TOKEN: { <FALSE : "ff"> }
 TOKEN: { <LETTER: (["a"-"f"])+ > }
 TOKEN: { <DIGIT: (["0"-"9"])+ >  }
 TOKEN: { <EQUAL: ":="> }
@@ -26,7 +26,6 @@ TOKEN: { <SEMICOLON : ";"> }
 TOKEN: { <PLUS : "+"> }
 TOKEN: { <MINUS : "-"> }
 TOKEN: { <TRUE : "tt"> }
-TOKEN: { <FALSE : "ff"> } 
 TOKEN: { <EQUAL2 : "=="> }
 TOKEN: { <NOT : "!"> }
 TOKEN: { <OR : "^"> }
@@ -91,7 +90,9 @@ void SimpleAExp():
 }
 void BExpression():
 {}
-{	
+{
+  	<FALSE>
+ 	| 
 	SimpleAExp()(AExpression())*
 	<EQUAL2>
 	SimpleAExp()(AExpression())*
@@ -100,6 +101,4 @@ void BExpression():
 	BExpression()
 	|
 	<TRUE>
-	|
-	<FALSE>
 }

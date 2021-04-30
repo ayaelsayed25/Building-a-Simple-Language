@@ -11,21 +11,21 @@ public interface LanguageConstants {
   /** End of File. */
   int EOF = 0;
   /** RegularExpression Id. */
-  int LETTER = 5;
+  int FALSE = 5;
   /** RegularExpression Id. */
-  int DIGIT = 6;
+  int LETTER = 6;
   /** RegularExpression Id. */
-  int EQUAL = 7;
+  int DIGIT = 7;
   /** RegularExpression Id. */
-  int SEMICOLON = 8;
+  int EQUAL = 8;
   /** RegularExpression Id. */
-  int PLUS = 9;
+  int SEMICOLON = 9;
   /** RegularExpression Id. */
-  int MINUS = 10;
+  int PLUS = 10;
   /** RegularExpression Id. */
-  int TRUE = 11;
+  int MINUS = 11;
   /** RegularExpression Id. */
-  int FALSE = 12;
+  int TRUE = 12;
   /** RegularExpression Id. */
   int EQUAL2 = 13;
   /** RegularExpression Id. */
@@ -55,6 +55,7 @@ public interface LanguageConstants {
     "\"\\t\"",
     "\"\\n\"",
     "\"\\r\"",
+    "\"ff\"",
     "<LETTER>",
     "<DIGIT>",
     "\":=\"",
@@ -62,7 +63,6 @@ public interface LanguageConstants {
     "\"+\"",
     "\"-\"",
     "\"tt\"",
-    "\"ff\"",
     "\"==\"",
     "\"!\"",
     "\"^\"",
