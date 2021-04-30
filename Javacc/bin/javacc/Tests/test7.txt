@@ -1,0 +1,11 @@
+a := 12354;
+b := 62154;
+c := 09908;
+d := e;
+fff := 0005;
+f := 0000;
+if tt then
+	skip 
+else
+	while ff do 
+		skip
