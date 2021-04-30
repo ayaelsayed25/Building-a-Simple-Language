@@ -11,9 +11,11 @@ public class Language implements LanguageConstants {
       Language.words();
     }
 
-  static final public void words() throws ParseException {
+  static final public String words() throws ParseException {
     Command();
     jj_consume_token(0);
+     {if (true) return "Parsed correctly";}
+    throw new Error("Missing return statement in function");
   }
 
   static final public void Command() throws ParseException {
@@ -131,6 +133,9 @@ public class Language implements LanguageConstants {
 
   static final public void BExpression() throws ParseException {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case FALSE:
+      jj_consume_token(FALSE);
+      break;
     case LETTER:
     case DIGIT:
       SimpleAExp();
@@ -170,9 +175,6 @@ public class Language implements LanguageConstants {
     case TRUE:
       jj_consume_token(TRUE);
       break;
-    case FALSE:
-      jj_consume_token(FALSE);
-      break;
     default:
       jj_la1[8] = jj_gen;
       jj_consume_token(-1);
@@ -196,7 +198,7 @@ public class Language implements LanguageConstants {
       jj_la1_init_0();
    }
    private static void jj_la1_init_0() {
-      jj_la1_0 = new int[] {0x100,0x130020,0x600,0x8000,0x600,0x60,0x600,0x600,0x5860,};
+      jj_la1_0 = new int[] {0x200,0x130040,0xc00,0x8000,0xc00,0xc0,0xc00,0xc00,0x50e0,};
    }
 
   /** Constructor with InputStream. */
