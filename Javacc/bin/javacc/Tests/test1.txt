@@ -1,7 +1,7 @@
-d := 6;
-if d == 5 then
-	d := d + 1
+d := (6+a);
+if (d == 5) then
+	d := (d + 1)
 else
-	d := d - 1;
-	while d == 5 do 
+	d := (d - 1);
+	while (d == 5) do 
 	skip

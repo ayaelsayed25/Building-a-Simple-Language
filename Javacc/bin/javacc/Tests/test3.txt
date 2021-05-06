@@ -1,16 +1,16 @@
-while a == 3 ^ ! tt do
+while ((a == 3) ^ ! tt) do
 	a := b;
-	if a == b then
+	if (a == b) then
 		a := 3
 	else
 		a := b;
-		if ! a == b ^ tt then 
-			a := 1 + 1 - 2
+		if !(!(a == b) ^ tt) then 
+			a := ((1 + 1) - 2)
 		else
 			a := 3;
-			a := 3 + 5;
-			while a == 3 do
-				if a == 3 then
+			a := (3 + 5);
+			while (a == 3) do
+				if (a == 3) then
 					a := 3
 				else
 					skip
