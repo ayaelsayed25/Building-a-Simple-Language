@@ -84,7 +84,7 @@ void AExp():
 void BExp():
 {}
 {
-    LOOKAHEAD(4) 	
+    LOOKAHEAD(3) 	
 	<LEFTBRAC>
 	BExp() < OR > BExp()
 	< RIGHTBRAC >
